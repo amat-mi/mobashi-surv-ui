@@ -1,0 +1,48 @@
+<ng-template transloco let-fn="$implicit">
+  <ion-content>
+    <div class="sfondo">
+      <div class="outerBox">
+        <div class="loginBox">
+          <div class="headBox">
+            <img class="logo" src="assets/logo.png" />
+          </div>
+          <div class="bodyBox">
+            <ion-card>
+              <ion-card-header>
+                <ion-item lines="none">
+                  <ion-label>
+                    {{ tr.c(fn,'AUTH.PAGETITLE') | uppercase }}
+                  </ion-label>
+                  <ng-container *ngIf="tr.selectedLang$ | async; let selectedLang">
+                    <ion-buttons slot="end">
+                      <ion-button color="primary" (click)="presentLangPopover($event)">
+                        {{ selectedLang.label }}
+                      </ion-button>
+                    </ion-buttons>
+                  </ng-container>
+                </ion-item>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-list class="inputBox" (keyup.enter)="login()">
+                  <ion-item>
+                    <ion-input autofocus="false" [(ngModel)]="username" type="text" inputmode="text" required
+                      label="{{ tr.c(fn,'AUTH.LOGIN.USERNAME') }}" labelPlacement="floating">
+                    </ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input [(ngModel)]="password" type="password" inputmode="text" required
+                      label="{{ tr.c(fn,'AUTH.LOGIN.PASSWORD') }}" labelPlacement="floating"></ion-input>
+                  </ion-item>
+                  <ion-button expand="block" (click)="login()" [disabled]="!username || !password">
+                    <ion-icon slot="start" name="log-in"></ion-icon>
+                    {{ tr.c(fn,'AUTH.LOGIN') }}
+                  </ion-button>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ng-template>

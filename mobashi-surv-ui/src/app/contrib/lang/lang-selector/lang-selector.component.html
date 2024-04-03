@@ -1,0 +1,9 @@
+<ng-container *ngIf="langs$ | async; let langs">
+  <ng-container *ngIf="selectedLang$ | async; let selected">
+    <ion-radio-group [value]="selected.id">
+      <ion-item *ngFor="let lang of langs" lines="none" button="true" detail="false" (click)="changed(lang)">
+        <ion-radio labelPlacement="end" [value]="lang.id">{{lang.label}}</ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ng-container>
+</ng-container>

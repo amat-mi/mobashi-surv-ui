@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="brand">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/" icon="close"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'SETTINGS.PAGETITLE' | transloco }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="innerContainer">
+    <app-lang-settings></app-lang-settings>
+
+    <app-auth-settings></app-auth-settings>
+
+    <ng-container *ngIf="deviceInfo$ | async as deviceInfo">
+      <ng-container *ngIf="appInfo$ | async as appInfo">
+        <ion-card>
+          <ion-card-content>
+            <!--
+      <pre>
+        {{deviceInfo | json}}
+      </pre>
+      -->
+            <small *ngIf="!!appInfo.name">
+              {{appInfo.name}} {{appInfo.version}} ({{appInfo.build}}) {{deviceInfo.operatingSystem}}
+              {{deviceInfo.osVersion}}
+            </small>
+            <small *ngIf="!appInfo.name">
+              {{deviceInfo.platform}} {{deviceInfo.operatingSystem}} {{deviceInfo.osVersion}}
+            </small>
+          </ion-card-content>
+        </ion-card>
+      </ng-container>
+    </ng-container>
+  </div>
+</ion-content>

@@ -1,0 +1,292 @@
+{
+    "back": {
+        "pages": [
+            {
+                "elements": [
+                    {
+                        "html": "<h4>Ti chiediamo di descrivere il tuo viaggio di ritorno da scuola verso casa</h4><p>Considera l'ultimo viaggio che hai fatto, anche se non hai seguito il tuo solito tragitto.</p>",
+                        "type": "html"
+                    }
+                ]
+            },
+            {
+                "elements": [
+                    {
+                        "name": "orig_stamp",
+                        "type": "text",
+                        "title": "Quando sei partito da scuola:",
+                        "inputType": "datetime-local",
+                        "isRequired": true
+                    }
+                ]
+            },
+            {
+                "title": "Tappe",
+                "description": "Descrivi le tappe di questo viaggio.",
+                "elements": [
+                    {
+                        "type": "text",
+                        "name": "stages_count",
+                        "title": "Quante tappe hai fatto?",
+                        "isRequired": true,
+                        "inputType": "number",
+                        "min": 1,
+                        "max": 4
+                    },
+                    {
+                        "type": "matrixdynamic",
+                        "name": "stages_matrix",
+                        "title": "Come hai viaggiato?",
+                        "description": "Elenca uno o più mezzi di trasporto che hai utilizzato in questo viaggio.",
+                        "valueName": "stages",
+                        "isRequired": true,
+                        "showHeader": false,
+                        "columns": [
+                            {
+                                "name": "mode",
+                                "cellType": "dropdown",
+                                "title": "Come hai viaggiato:",
+                                "choices": [
+                                    {
+                                        "text": "Con i trasporti pubblici",
+                                        "value": "tpl"
+                                    },
+                                    {
+                                        "text": "In macchina",
+                                        "value": "car"
+                                    },
+                                    {
+                                        "text": "In bicicletta",
+                                        "value": "bike"
+                                    },
+                                    {
+                                        "text": "A piedi",
+                                        "value": "foot"
+                                    }
+                                ],
+                                "colCount": 1,
+                                "isRequired": true,
+                                "showNoneItem": false,
+                                "showOtherItem": true,
+                                "showClearButton": true,
+                                "separateSpecialChoices": false
+                            }
+                        ],
+                        "bindings": {
+                            "rowCount": "stages_count",
+                            "minRowCount": "stages_count",
+                            "maxRowCount": "stages_count"
+                        },
+                        "rowCount": 0,
+                        "minRowCount": 0,
+                        "maxRowCount": 0,
+                        "allowAddRows": false,
+                        "allowRemoveRows": false
+                    },
+                    {
+                        "type": "paneldynamic",
+                        "name": "stages",
+                        "title": "Tappe",
+                        "valueName": "stages",
+                        "templateElements": [
+                            {
+                                "name": "is_last",
+                                "type": "expression",
+                                "expression": "({stages_count} - {panelIndex}) <= 1",
+                                "visibleIf": "false"
+                            },
+                            {
+                                "name": "dest_stamp_title",
+                                "type": "expression",
+                                "expression": "iif({panel.is_last}, 'Quando sei arrivato a casa:', 'Quando sei arrivato:')",
+                                "visibleIf": "false"
+                            },
+                            {
+                                "name": "dest_title",
+                                "type": "expression",
+                                "expression": "iif({panel.is_last}, 'Sei arrivato a casa:', 'Dove sei arrivato:')",
+                                "visibleIf": "false"
+                            },
+                            {
+                                "name": "dest",
+                                "type": "map",
+                                "title": "{panel.dest_title}",
+                                "bounds": [
+                                    8.71313813769412,
+                                    45.1614578908364,
+                                    9.55012072019126,
+                                    45.7406920672967
+                                ],
+                                "visibleIf": "true",
+                                "isRequired": true
+                            },
+                            {
+                                "name": "dest_stamp",
+                                "type": "text",
+                                "title": "{panel.dest_stamp_title}",
+                                "inputType": "datetime-local",
+                                "visibleIf": "{panel.is_last} or {panel.dest} notempty",
+                                "isRequired": true
+                            }
+                        ],
+                        "templateTitle": "Tappa: {panelIndex} ({panel.mode})",
+                        "allowAddPanel": false,
+                        "allowRemovePanel": false
+                    }
+                ]
+            }
+        ],
+        "completedHtml": "<h4>Grazie per il tuo aiuto!</h4>",
+        "showProgressBar": "top",
+        "startSurveyText": "Iniziamo!",
+        "firstPageIsStarted": true
+    },
+    "forth": {
+        "pages": [
+            {
+                "elements": [
+                    {
+                        "html": "<h4>Ti chiediamo di descrivere il tuo viaggio da casa a scuola</h4><p>Considera l'ultimo viaggio che hai fatto, anche se non hai seguito il tuo solito tragitto.</p>",
+                        "type": "html"
+                    }
+                ]
+            },
+            {
+                "elements": [
+                    {
+                        "name": "orig_stamp",
+                        "type": "text",
+                        "title": "Quando sei partito da casa:",
+                        "inputType": "datetime-local",
+                        "isRequired": true
+                    }
+                ]
+            },
+            {
+                "elements": [
+                    {
+                        "name": "orig",
+                        "type": "map",
+                        "title": "Sei partito da casa:",
+                        "bounds": [
+                            8.71313813769412,
+                            45.1614578908364,
+                            9.55012072019126,
+                            45.7406920672967
+                        ],
+                        "isRequired": true
+                    }
+                ]
+            },
+            {
+                "elements": [
+                    {
+                        "type": "text",
+                        "name": "stages_count",
+                        "title": "Quante tappe hai fatto?",
+                        "isRequired": true,
+                        "inputType": "number",
+                        "min": 1,
+                        "max": 4
+                    },
+                    {
+                        "type": "paneldynamic",
+                        "name": "stages",
+                        "title": "Tappe",
+                        "valueName": "stages",
+                        "templateElements": [
+                            {
+                                "name": "is_last",
+                                "type": "expression",
+                                "expression": "({stages_count} - {panelIndex}) <= 1",
+                                "visibleIf": "false"
+                            },
+                            {
+                                "name": "dest_stamp_title",
+                                "type": "expression",
+                                "expression": "iif({panel.is_last}, 'Quando sei arrivato a scuola:', 'Quando sei arrivato:')",
+                                "visibleIf": "false"
+                            },
+                            {
+                                "name": "dest_title",
+                                "type": "expression",
+                                "expression": "iif({panel.is_last}, 'Sei arrivato a scuola:', 'Dove sei arrivato:')",
+                                "visibleIf": "false"
+                            },
+                            {
+                                "name": "mode",
+                                "type": "dropdown",
+                                "title": "Come hai viaggiato:",
+                                "choices": [
+                                    {
+                                        "text": "Con i trasporti pubblici",
+                                        "value": "tpl"
+                                    },
+                                    {
+                                        "text": "In macchina",
+                                        "value": "car"
+                                    },
+                                    {
+                                        "text": "In bicicletta",
+                                        "value": "bike"
+                                    },
+                                    {
+                                        "text": "A piedi",
+                                        "value": "foot"
+                                    }
+                                ],
+                                "colCount": 1,
+                                "isRequired": true,
+                                "showNoneItem": false,
+                                "showOtherItem": true,
+                                "showClearButton": true,
+                                "separateSpecialChoices": false
+                            },
+                            {
+                                "name": "dest",
+                                "type": "map",
+                                "title": "{panel.dest_title}",
+                                "bounds": [
+                                    8.71313813769412,
+                                    45.1614578908364,
+                                    9.55012072019126,
+                                    45.7406920672967
+                                ],
+                                "visibleIf": "!{panel.is_last}",
+                                "isRequired": true
+                            },
+                            {
+                                "type": "html",
+                                "html": "<b>Sei arrivato a scuola.</b>",
+                                "visibleIf": "{panel.is_last}"
+                            },
+                            {
+                                "name": "dest_stamp",
+                                "type": "text",
+                                "title": "{panel.dest_stamp_title}",
+                                "inputType": "datetime-local",
+                                "visibleIf": "{panel.is_last} or {panel.dest} notempty",
+                                "isRequired": true
+                            }
+                        ],
+                        "templateTitle": "Tappa: {panelIndex} ({panel.mode})",
+                        "bindings": {
+                            "panelCount": "stages_count",
+                            "minPanelCount": "stages_count",
+                            "maxPanelCount": "stages_count"
+                        },
+                        "panelCount": 0,
+                        "minPanelCount": 0,
+                        "maxPanelCount": 0,
+                        "allowAddPanel": false,
+                        "allowRemovePanel": false
+                    }
+                ]
+            }
+        ],
+        "completedHtml": "<h4>Grazie per il tuo aiuto!</h4>",
+        "showProgressBar": "top",
+        "startSurveyText": "Iniziamo!",
+        "firstPageIsStarted": true
+    }
+}

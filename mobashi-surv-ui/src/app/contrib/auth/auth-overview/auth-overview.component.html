@@ -1,0 +1,8 @@
+<ng-template transloco let-fn="$implicit">
+  <ng-container *ngIf="userdata$ | async as userdata;">
+    <ion-item lines="none">
+      <ion-label>{{ tr.c(fn,'AUTH.USERNAME') }}</ion-label>
+      <ion-text>{{userdata.username}}</ion-text>
+    </ion-item>
+  </ng-container>
+</ng-template>

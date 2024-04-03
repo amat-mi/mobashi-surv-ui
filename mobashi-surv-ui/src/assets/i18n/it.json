@@ -1,0 +1,115 @@
+{
+    "DEF": {
+        "SURVEY.SINGULAR": "Questionario",
+        "SURVEY.PLURAL": "Questionari"
+    },
+    "AUTH": {
+        "PAGETITLE": "Accesso",
+        "LOGIN.USERNAME": "Nome utente o chiave di accesso",
+        "LOGIN.PASSWORD": "Password o chiave di accesso",
+        "USERNAME": "Nome utente",
+        "IDENTIFIER": "Identificativo",
+        "LOGIN": "Accedi",
+        "LOGOUT": "Esci",
+        "INVALIDLOGIN": "Credenziali non valide",
+        "SETTINGS.TITLE": "PROFILO"
+    },
+    "LANG": {
+        "OVERVIEW.LABEL": "Lingua",
+        "SETTINGS.LABEL": "{{LANG.OVERVIEW.LABEL}}"
+    },
+    "THEME": {
+        "NAMES": {
+            "AUTO": "Automatico",
+            "LIGHT": "Chiaro",
+            "DARK": "Scuro"
+        },
+        "OVERVIEW.LABEL": "Tema",
+        "SETTINGS.LABEL": "{{THEME.OVERVIEW.LABEL}}"
+    },
+    "SETTINGS": {
+        "SINGULAR": "Impostazione",
+        "PLURAL": "Impostazioni",
+        "MENUTITLE": "{{SETTINGS.PLURAL}}",
+        "PAGETITLE": "{{SETTINGS.PLURAL}}",
+        "USER": "Utente",
+        "LOGOUT": "Esci",
+        "OVERVIEW.TITLE": "IMPOSTAZIONI"
+    },
+    "SCAN": {
+        "PAGETITLE": "Leggi QR code",
+        "FORBIDDEN": "Accesso alla fotocamera non consentito",
+        "DENIED": "Accesso alla fotocamera non consentito",
+        "RETRY": "Riprova",
+        "OPENSETTINGS": "Impostazioni di sistema",
+        "CANTOPENSETTINGS": "Impossibile aprire impostazioni di sistema",
+        "INPUT": {
+            "PAGETITLE": "Inserisci codice",
+            "LABEL": "Indirizzo link completo",
+            "BUTTON": "Fatto"
+        }
+    },
+    "SURVEYHOME": {
+        "MENUTITLE": "{{DEF.SURVEY.PLURAL}}",
+        "PAGETITLE": "{{SURVEYHOME.MENUTITLE}}",
+        "SLOGAN": "Analisi delle preferenze di spostamento",
+        "ADD": "Aggiungi un questionario",
+        "NOSURVEYS": "Premi il pulsante per leggere il QR code che hai ricevuto e aggiungere il tuo primo questionario",
+        "SCANCODE": ""
+    },
+    "SURVEYADD": {
+        "SLOGAN": "Questionari aggiunti",
+        "NOSURVEYS": "Premi il pulsante per leggere il QR code che hai ricevuto e aggiungere il tuo primo questionario"
+    },
+    "SURVEYSUMMARY": {
+        "MENUTITLE": "Riepilogo",
+        "PAGETITLE": "Riepilogo questionario"
+    },
+    "SURVEY": {
+        "MENUTITLE": "Questionario",
+        "PAGETITLE": "Compilazione questionario",
+        "KIND": {
+            "FORTH": "Viaggio di andata",
+            "BACK": "Viaggio di ritorno"
+        },
+        "STAMP": "Ultima modifica",
+        "START": "Partenza",
+        "END": "Arrivo",
+        "STAGE": "Tappa",
+        "STATUS": {
+            "-100": {
+                "LABEL": "Annullato (non più modificabile)",
+                "ACTION": "Visualizza",
+                "ICON": "eye"
+            },
+            "0": {
+                "LABEL": "Da compilare",
+                "ACTION": "Compila",
+                "ICON": "pencil",
+                "SUMMARYACTION": "Compila",
+                "SUMMARYICON": "pencil"
+            },
+            "50": {
+                "LABEL": "Compilato",
+                "ACTION": "Visualizza",
+                "ICON": "eye",
+                "SUMMARYACTION": "Modifica",
+                "SUMMARYICON": "pencil"
+            },
+            "100": {
+                "LABEL": "Recepito (non più modificabile)",
+                "ACTION": "Visualizza",
+                "ICON": "eye"
+            }
+        },
+        "MODE": {
+            "TPL.LABEL": "Con i trasporti pubblici",
+            "CAR.LABEL": "In macchina",
+            "BIKE.LABEL": "In bicicletta",
+            "FOOT.LABEL": "A piedi"
+        },
+        "ERRORS": {
+            "MISSING_TEMPLATE": "Template mancante: {{KIND}}"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+<ng-template transloco let-fn="$implicit">
+  <ng-container *ngIf="survey$ | async; let survey">
+    <ion-header>
+      <ion-toolbar color="brand">
+        <ion-buttons slot="start">
+          <ion-back-button text="" defaultHref="/survey" [disabled]="saving"></ion-back-button>
+        </ion-buttons>
+
+        <ion-title>
+          {{ tr.c(fn,'SURVEY.PAGETITLE') }}
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ng-container *ngIf="surveyModel$ | async; let surveyModel">
+        <survey [model]="surveyModel"></survey>
+
+        <app-map #mapComponent [interactive]="true" [fromTo]="fromTo" *ngIf="fromTo">
+        </app-map>
+      </ng-container>
+    </ion-content>
+  </ng-container>
+</ng-template>

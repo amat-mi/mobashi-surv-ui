@@ -1,0 +1,55 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "Mobashi SURV UI",
+	// Update the 'dockerComposeFile' list if you have more compose files or use different names.
+	// The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
+	"dockerComposeFile": [
+		"../docker-compose.yml",
+		"docker-compose.yml"
+	],
+	// The 'service' property is the name of the service for the container that VS Code should
+	// use. Update this value and .devcontainer/docker-compose.yml to the real service name.
+	"service": "mobashi-surv-ui",
+	// Tells devcontainer.json supporting services / tools whether they should run /bin/sh -c "while sleep 1000; do :; done" when starting the container instead of the container’s default command (since the container can shut down if the default command fails). Set to false if the default command must run for the container to function properly. Defaults to true for when using an image Dockerfile and false when referencing a Docker Compose file.
+	// It seems to be ignored, though!!!
+	// "overrideCommand": false,
+	// The optional 'workspaceFolder' property is the path VS Code should open by default when
+	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"remoteEnv": {},
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Uncomment the next line if you want start specific services in your Docker Compose config.
+	// "runServices": [],
+	// Uncomment the next line if you want to keep your containers running after VS Code shuts down.
+	// "shutdownAction": "none",
+	// Uncomment the next line to run commands after the container is created.
+	// "postCreateCommand": "cat /etc/os-release",
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": {
+				"ionic.defaultPort": 4102
+			},
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"eamodio.gitlens",
+				"mhutchie.git-graph",
+				"gruntfuggly.todo-tree",
+				"ionutvmi.path-autocomplete",
+				"vsls-contrib.gistfs",
+				"loiane.ionic-extension-pack",
+				"ionic.ionic"
+			]
+		}
+	},
+	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "root"
+	//"containerUser": "appuser"
+}

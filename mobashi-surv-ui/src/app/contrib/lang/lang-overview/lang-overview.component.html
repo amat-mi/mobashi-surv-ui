@@ -1,0 +1,6 @@
+<ng-container *ngIf="selectedLang$ | async; let selected">
+  <ion-item lines="none">
+    <ion-label>{{ 'LANG.OVERVIEW.LABEL' | transloco }}</ion-label>
+    <ion-text> {{selected.label}} </ion-text>
+  </ion-item>
+</ng-container>

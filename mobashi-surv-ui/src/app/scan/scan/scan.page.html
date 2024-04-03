@@ -1,0 +1,98 @@
+<ng-template transloco let-fn="$implicit">
+  <ng-container *ngIf="capabs$ | async; let capabs">
+    <ion-header>
+      <ion-toolbar color="brand">
+        <ion-buttons slot="start">
+          <ion-back-button text="" defaultHref="/" icon="close" (click)="cancel()"></ion-back-button>
+        </ion-buttons>
+
+        <ion-title>{{tr.c(fn,capabs.canScan ? 'SCAN.PAGETITLE' : 'SCAN.INPUT.PAGETITLE')}}</ion-title>
+
+        <ion-buttons slot="end">
+          <ion-button (click)="capabs.wantInput = !capabs.wantInput">
+            <ion-icon slot="icon-only" [name]="!capabs.wantInput ? 'pencil' : 'chevron-up'"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ng-container *ngIf="capabs.canScan">
+        <ng-container *ngIf="status$ | async; let status">
+          <ng-container *ngIf="status.authorized">
+            <div class="scan-area-outer">
+              <div class="scan-area-inner">
+                <video #webScanVideo style="max-width: 100vmin; max-height: 100vmin;" *ngIf="capabs.webScan"></video>
+              </div>
+            </div>
+
+            <ion-fab vertical="bottom" horizontal="center" slot="fixed"
+              *ngIf="status.canEnableLight && capabs.canCycle">
+              <ion-fab-button>
+                <ion-icon name="settings"></ion-icon>
+              </ion-fab-button>
+              <ion-fab-list side="top">
+                <ion-fab-button color="primary" (click)="toggleLight()">
+                  <ion-icon [name]="status.lightEnabled ? 'flash' : 'flash-off'"></ion-icon>
+                </ion-fab-button>
+
+                <ion-fab-button color="primary" (click)="cycleWebCamera()">
+                  <ion-icon name="camera-reverse"></ion-icon>
+                </ion-fab-button>
+              </ion-fab-list>
+            </ion-fab>
+
+            <ion-fab vertical="bottom" horizontal="center" slot="fixed"
+              *ngIf="status.canEnableLight && !capabs.canCycle">
+              <ion-fab-button color="primary" (click)="toggleLight()">
+                <ion-icon [name]="status.lightEnabled ? 'flash' : 'flash-off'"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+
+            <ion-fab vertical="bottom" horizontal="center" slot="fixed"
+              *ngIf="!status.canEnableLight && capabs.canCycle">
+              <ion-fab-button color="primary" (click)="cycleWebCamera()">
+                <ion-icon name="camera-reverse"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+          </ng-container>
+
+          <ng-container *ngIf="!status.authorized && !status.denied">
+            <ion-item lines="none" color="danger">
+              <ion-label>
+                {{ tr.c(fn,'SCAN.FORBIDDEN') }}
+              </ion-label>
+            </ion-item>
+            <ion-button expand="block" size="large" class="ion-margin" (click)="scan()">
+              {{ tr.c(fn,'SCAN.RETRY') }}
+            </ion-button>
+          </ng-container>
+
+          <ng-container *ngIf="!status.authorized && status.denied">
+            <ion-item lines="none" color="danger">
+              <ion-label>
+                {{ tr.c(fn,'SCAN.DENIED') }}
+              </ion-label>
+              <ion-label *ngIf="!status.canOpenSettings">
+                {{ tr.c(fn,'SCAN.CANTOPENSETTINGS') }}
+              </ion-label>
+            </ion-item>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="!capabs.canScan || capabs.wantInput">
+        <ion-list lines="none">
+          <ion-item>
+            <ion-input autofocus="false" [(ngModel)]="code" type="text" inputmode="text" clear-input="true"
+              label="{{ tr.c(fn,'SCAN.INPUT.LABEL') }}" labelPlacement="stacked">
+            </ion-input>
+          </ion-item>
+          <ion-button expand="block" size="large" class="ion-margin" (click)="inputDone()" [disabled]="!code">
+            {{ tr.c(fn,'SCAN.INPUT.BUTTON') }}
+          </ion-button>
+        </ion-list>
+      </ng-container>
+    </ion-content>
+  </ng-container>
+</ng-template>

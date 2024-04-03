@@ -1,0 +1,9 @@
+<ng-container *ngIf="themes$ | async; let themes">
+  <ng-container *ngIf="selectedTheme$ | async; let selected">
+    <ion-radio-group [value]="selected.name">
+      <ion-item *ngFor="let theme of themes" lines="none" button="true" detail="false" (click)="changed(theme)">
+        <ion-radio labelPlacement="end" [value]="theme.name">{{theme.label}}</ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,99 @@
+<ng-template transloco let-fn="$implicit">
+  <ng-container *ngIf="survey$ | async; let survey">
+    <ion-header>
+      <ion-toolbar color="brand">
+        <ion-buttons slot="start">
+          <ion-back-button text="" defaultHref="/survey"></ion-back-button>
+        </ion-buttons>
+
+        <ion-title>
+          {{ tr.c(fn,'SURVEYSUMMARY.PAGETITLE') }}
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <ion-item lines="full" button="false" detail="false">
+          <ion-label>
+            <h4>
+              <ion-icon name="lock-closed" *ngIf="!survey?.campaign?.is_active"></ion-icon>
+              {{survey?.campaign?.name}}
+            </h4>
+
+            <h4 *ngIf="survey?.school?.name">
+              {{survey?.school?.name}}
+            </h4>
+
+            <h4>
+              <ion-text color="primary">
+                {{ tr.c(fn,'SURVEY.KIND.' + survey?.kind.toUpperCase()) }}
+              </ion-text>
+            </h4>
+
+            <ion-toolbar>
+              <span class="ion-text-start">
+                {{ tr.c(fn,'SURVEY.STATUS.' + survey?.status + '.LABEL') }}
+              </span>
+              <ion-buttons slot="end" *ngIf="survey?.can_edit">
+                <ion-button color="primary" fill="clear" slot="end" [routerLink]="survey?.can_edit ? ['../'] : null"
+                  routerDirection="forward">
+                  {{ tr.c(fn,'SURVEY.STATUS.' + survey?.status + '.SUMMARYACTION') }}
+                </ion-button>
+              </ion-buttons>
+              <div>
+                <small>
+                  {{ tr.c(fn,'SURVEY.STAMP') }}:
+                  {{survey?.stamp | date}}
+                </small>
+              </div>
+            </ion-toolbar>
+          </ion-label>
+        </ion-item>
+
+        <ng-container *ngIf="survey?.content; let content">
+          <ion-item>
+            <ion-icon aria-hidden="true" [name]="survey?.kind == 'forth' ? 'home' : 'school'" slot="start"></ion-icon>
+            <ion-label>
+              <h2>
+                {{ tr.c(fn,'SURVEY.START') }} {{ content?.orig_stamp | date }}
+              </h2>
+
+              <h4 *ngIf="content?.orig ?? survey?.def_orig; let place">
+                <p class="ion-text-wrap">
+                  {{ place?.address ?? place?.lat + ' / ' + place?.lng }}
+                </p>
+                <p class="ion-text-end" *ngIf="place?.name">
+                  {{ place?.name }}
+                </p>
+              </h4>
+            </ion-label>
+          </ion-item>
+
+          <ion-item *ngFor="let stage of (content?.stages ?? []); index as i">
+            <ion-icon aria-hidden="true"
+              [name]="i + 1 < content?.stages_count ? 'flag' : survey?.kind == 'forth' ? 'school' : 'home'"
+              slot="start"></ion-icon>
+            <ion-label>
+              <h4 class="ion-text-end">
+                {{ tr.c(fn,'SURVEY.STAGE') }} {{ i + 1 }}
+                {{ tr.c(fn,'SURVEY.MODE.' + stage.mode?.toUpperCase() + '.LABEL') }}
+              </h4>
+              <h2>
+                {{ tr.c(fn,'SURVEY.END') }} {{ stage.dest_stamp | date }}
+              </h2>
+              <h4 *ngIf="stage.dest ?? survey?.def_dest; let place">
+                <p class="ion-text-wrap">
+                  {{ place?.address ?? place?.lat + ' / ' + place?.lng }}
+                </p>
+                <p class="ion-text-end" *ngIf="place?.name">
+                  {{ place?.name }}
+                </p>
+              </h4>
+            </ion-label>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </ion-content>
+  </ng-container>
+</ng-template>

@@ -1,0 +1,10 @@
+<ion-button size="small" (click)="confirm()" *ngIf="!!interactive">
+    <ion-icon name="eyedrop" slot="icon-only"></ion-icon>
+</ion-button>
+
+<div class="map-container">
+    <div class="map-marker-centered" *ngIf="!!coords"></div>
+    <mgl-map [style]="_style" [interactive]="interactive" (mapLoad)="mapLoad($event)">
+        <mgl-control mglGeolocate position="bottom-right"> </mgl-control>
+    </mgl-map>
+</div>

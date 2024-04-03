@@ -1,0 +1,7 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+**/local_vars
+**/local_configs
+**/local_assets
+**/mnt

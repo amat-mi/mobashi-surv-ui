@@ -1,0 +1,40 @@
+{
+  "name": "@angular-redux/store",
+  "version": "10.0.0",
+  "description": "Angular bindings for Redux",
+  "author": "William Buchwalter <wbuchwalter@gmail.com> (http://github.com/wbuchwalter)",
+  "license": "MIT",
+  "homepage": "https://github.com/angular-redux/platform",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "ng-packagr -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular-redux/platform.git"
+  },
+  "bugs": {
+    "url": "https://github.com/angular-redux/platform/issues"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "redux",
+    "store",
+    "state management"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "peerDependencies": {
+    "@angular/forms": "^16.0.0",
+    "redux": "^4.2.1",
+    "rxjs": "~7.8.0"
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.9"
+  }
+}

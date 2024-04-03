@@ -1,0 +1,115 @@
+{
+    "DEF": {
+        "SURVEY.SINGULAR": "Survey",
+        "SURVEY.PLURAL": "Surveys"
+    },
+    "AUTH": {
+        "PAGETITLE": "Login",
+        "LOGIN.USERNAME": "Username or access key",
+        "LOGIN.PASSWORD": "Password or access key",
+        "USERNAME": "Username",
+        "IDENTIFIER": "Identifier",
+        "LOGIN": "Login",
+        "LOGOUT": "Logout",
+        "INVALIDLOGIN": "Invalid login",
+        "SETTINGS.TITLE": "PROFILE"
+    },
+    "LANG": {
+        "OVERVIEW.LABEL": "Language",
+        "SETTINGS.LABEL": "{{LANG.OVERVIEW.LABEL}}"
+    },
+    "THEME": {
+        "NAMES": {
+            "AUTO": "Automatic",
+            "LIGHT": "Light",
+            "DARK": "Dark"
+        },
+        "OVERVIEW.LABEL": "Theme",
+        "SETTINGS.LABEL": "{{THEME.OVERVIEW.LABEL}}"
+    },
+    "SETTINGS": {
+        "SINGULAR": "Setting",
+        "PLURAL": "Settings",
+        "MENUTITLE": "{{SETTINGS.PLURAL}}",
+        "PAGETITLE": "{{SETTINGS.PLURAL}}",
+        "USER": "User",
+        "LOGOUT": "Logout",
+        "OVERVIEW.TITLE": "SETTINGS"
+    },
+    "SCAN": {
+        "PAGETITLE": "Scan QR code",
+        "FORBIDDEN": "Access to camera not permitted",
+        "DENIED": "Access to camera not permitted",
+        "RETRY": "Retry",
+        "OPENSETTINGS": "System settings",
+        "CANTOPENSETTINGS": "System settings cannot be opened",
+        "INPUT": {
+            "PAGETITLE": "Input code",
+            "LABEL": "Complete link address",
+            "BUTTON": "Done"
+        }
+    },
+    "SURVEYHOME": {
+        "MENUTITLE": "{{DEF.SURVEY.PLURAL}}",
+        "PAGETITLE": "{{SURVEYHOME.MENUTITLE}}",
+        "SLOGAN": "Analysis of travel preferences",
+        "ADD": "Add a survey",
+        "NOSURVEYS": "Press the button to read the QR code you received and add your first survey",
+        "SCANCODE": ""
+    },
+    "SURVEYADD": {
+        "SLOGAN": "Added surveys",
+        "NOSURVEYS": "Press the button to read the QR code you received and add your first survey"
+    },
+    "SURVEYSUMMARY": {
+        "MENUTITLE": "Summary",
+        "PAGETITLE": "Survey summary"
+    },
+    "SURVEY": {
+        "MENUTITLE": "Survey",
+        "PAGETITLE": "Survey filling out",
+        "KIND": {
+            "FORTH": "Outward journey",
+            "BACK": "Return journey"
+        },
+        "STAMP": "Last edit",
+        "START": "Start",
+        "END": "Finish",
+        "STAGE": "Stage",
+        "STATUS": {
+            "-100": {
+                "LABEL": "Canceled (no longer editable)",
+                "ACTION": "View",
+                "ICON": "eye"
+            },
+            "0": {
+                "LABEL": "To be filled out",
+                "ACTION": "Fill out",
+                "ICON": "pencil",
+                "SUMMARYACTION": "Fill out",
+                "SUMMARYICON": "pencil"
+            },
+            "50": {
+                "LABEL": "Filled out",
+                "ACTION": "View",
+                "ICON": "eye",
+                "SUMMARYACTION": "Edit",
+                "SUMMARYICON": "pencil"
+            },
+            "100": {
+                "LABEL": "Received (no longer editable)",
+                "ACTION": "View",
+                "ICON": "eye"
+            }
+        },
+        "MODE": {
+            "TPL.LABEL": "By public transport",
+            "CAR.LABEL": "By car",
+            "BIKE.LABEL": "On bike",
+            "FOOT.LABEL": "On foot"
+        },
+        "ERRORS": {
+            "MISSING_TEMPLATE": "Missing template: {{KIND}}"
+        }
+    }
+}

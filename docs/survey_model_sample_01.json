@@ -1,0 +1,227 @@
+{
+    "back": {
+        "pages": [
+            {
+                "elements": [
+                    {
+                        "html": "<h4>Ti chiediamo di descrivere il tuo viaggio di ritorno da scuola verso casa</h4><p>Considera l'ultimo viaggio che hai fatto, anche se non hai seguito il tuo solito tragitto.</p>",
+                        "type": "html"
+                    }
+                ]
+            },
+            {
+                "elements": [
+                    {
+                        "name": "orig_stamp",
+                        "type": "text",
+                        "title": "Quando sei partito:",
+                        "inputType": "datetime-local",
+                        "isRequired": true
+                    }
+                ]
+            },
+            {
+                "elements": [
+                    {
+                        "name": "orig",
+                        "type": "map",
+                        "title": "Da dove sei partito:",
+                        "bounds": [
+                            8.71313813769412,
+                            45.1614578908364,
+                            9.55012072019126,
+                            45.7406920672967
+                        ],
+                        "isRequired": true
+                    }
+                ]
+            },
+            {
+                "elements": [
+                    {
+                        "type": "paneldynamic",
+                        "name": "tappe",
+                        "title": "Tappe",
+                        "templateElements": [
+                            {
+                                "name": "mode",
+                                "type": "dropdown",
+                                "title": "Come hai viaggiato:",
+                                "choices": [
+                                    {
+                                        "text": "Con i trasporti pubblici",
+                                        "value": "tpl"
+                                    },
+                                    {
+                                        "text": "In macchina",
+                                        "value": "car"
+                                    },
+                                    {
+                                        "text": "In bicicletta",
+                                        "value": "bike"
+                                    },
+                                    {
+                                        "text": "A piedi",
+                                        "value": "foot"
+                                    }
+                                ],
+                                "colCount": 1,
+                                "isRequired": true,
+                                "showNoneItem": false,
+                                "showOtherItem": true,
+                                "showClearButton": true,
+                                "separateSpecialChoices": false
+                            },
+                            {
+                                "name": "dest_stamp",
+                                "type": "text",
+                                "title": "Quando sei arrivato:",
+                                "inputType": "datetime-local",
+                                "isRequired": true
+                            },
+                            {
+                                "name": "dest",
+                                "type": "map",
+                                "title": "Dove sei arrivato:",
+                                "bounds": [
+                                    8.71313813769412,
+                                    45.1614578908364,
+                                    9.55012072019126,
+                                    45.7406920672967
+                                ],
+                                "enableIf": "{panel.dest} empty",
+                                "isRequired": true
+                            }
+                        ],
+                        "panelCount": 1,
+                        "panelAddText": "Aggiungi un'altra tappa",
+                        "panelRemoveText": "Rimuovi questa tappa"
+                    }
+                ]
+            }
+        ],
+        "previewText": "Rivedi",
+        "completedHtml": "<h4>Grazie per il tuo aiuto!</h4>",
+        "showProgressBar": "top",
+        "startSurveyText": "Iniziamo!",
+        "firstPageIsStarted": true,
+        "showPreviewBeforeComplete": "showAnsweredQuestions"
+    },
+    "forth": {
+        "pages": [
+            {
+                "elements": [
+                    {
+                        "html": "<h4>Ti chiediamo di descrivere il tuo viaggio da casa a scuola</h4><p>Considera l'ultimo viaggio che hai fatto, anche se non hai seguito il tuo solito tragitto.</p>",
+                        "type": "html"
+                    }
+                ]
+            },
+            {
+                "elements": [
+                    {
+                        "name": "orig_stamp",
+                        "type": "text",
+                        "title": "Quando sei partito:",
+                        "inputType": "datetime-local",
+                        "isRequired": true
+                    }
+                ]
+            },
+            {
+                "elements": [
+                    {
+                        "name": "orig",
+                        "type": "map",
+                        "title": "Da dove sei partito:",
+                        "bounds": [
+                            8.71313813769412,
+                            45.1614578908364,
+                            9.55012072019126,
+                            45.7406920672967
+                        ],
+                        "isRequired": true
+                    }
+                ]
+            },
+            {
+                "elements": [
+                    {
+                        "type": "paneldynamic",
+                        "name": "tappe",
+                        "title": "Tappe",
+                        "templateElements": [
+                            {
+                                "name": "mode",
+                                "type": "dropdown",
+                                "title": "Come hai viaggiato:",
+                                "choices": [
+                                    {
+                                        "text": "Con i trasporti pubblici",
+                                        "value": "tpl"
+                                    },
+                                    {
+                                        "text": "In macchina",
+                                        "value": "car"
+                                    },
+                                    {
+                                        "text": "In bicicletta",
+                                        "value": "bike"
+                                    },
+                                    {
+                                        "text": "A piedi",
+                                        "value": "foot"
+                                    }
+                                ],
+                                "colCount": 1,
+                                "isRequired": true,
+                                "showNoneItem": false,
+                                "showOtherItem": true,
+                                "showClearButton": true,
+                                "separateSpecialChoices": false
+                            },
+                            {
+                                "name": "dest_reached",
+                                "type": "boolean",
+                                "title": "Sei arrivato a destinazione?",
+                                "renderAs": "radio",
+                                "visibleIf": "{panel.mode} notempty",
+                                "isRequired": true
+                            },
+                            {
+                                "name": "dest",
+                                "type": "map",
+                                "title": "Dove sei arrivato:",
+                                "bounds": [
+                                    8.71313813769412,
+                                    45.1614578908364,
+                                    9.55012072019126,
+                                    45.7406920672967
+                                ],
+                                "visibleIf": "{panel.dest_reached} notempty and !{panel.dest_reached}",
+                                "isRequired": true
+                            },
+                            {
+                                "name": "dest_stamp",
+                                "type": "text",
+                                "title": "Quando sei arrivato:",
+                                "inputType": "datetime-local",
+                                "visibleIf": "{panel.dest_reached} or {panel.dest} notempty",
+                                "isRequired": true
+                            }
+                        ],
+                        "panelCount": 1,
+                        "panelAddText": "Aggiungi un'altra tappa",
+                        "panelRemoveText": "Rimuovi questa tappa"
+                    }
+                ]
+            }
+        ],
+        "previewText": "Rivedi",
+        "completedHtml": "<h4>Grazie per il tuo aiuto!</h4>",
+        "showProgressBar": "top",
+        "startSurveyText": "Iniziamo!",
+        "firstPageIsStarted": true,
+        "showPreviewBeforeComplete": "showAnsweredQuestions"
+    }
+}

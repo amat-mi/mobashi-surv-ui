@@ -1,0 +1,11 @@
+<ion-item lines="none">
+    <ion-label>
+        <ion-text>
+            {{model.value?.address}}
+        </ion-text>
+    </ion-label>
+</ion-item>
+
+<app-map #mapComponent [coords]="[model.value?.lng,model.value?.lat]" [address]="model.value?.address"
+    [bounds]="model.bounds" [interactive]="model.interactive" (confirmation)="confirmation($event)" *ngIf="showMap">
+</app-map>

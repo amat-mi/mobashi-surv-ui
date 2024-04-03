@@ -1,0 +1,18 @@
+.scan-area-outer {
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.scan-area-inner {
+  margin: auto;
+}
+
+.scan-area-icon {
+  font-size: calc(280px + (350 - 280) * ((100vw - 300px) / (1600 - 300)));
+  --ionicon-stroke-width: 16px;
+  opacity: 30%;
+}
